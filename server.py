@@ -5,17 +5,19 @@ app = Flask(__name__)
 
 @app.route("/emotionDetector")
 def emotion_detector_route():
-    text = request.args.get("textToAnalyze")
+    text_to_analyze = request.args.get("textToAnalyze")
 
-    if not text:
+    # Handle blank input
+    if text_to_analyze is None or text_to_analyze == "":
         return "Invalid input! Please enter some text."
 
-    result = emotion_detector(text)
+    response = emotion_detector(text_to_analyze)
 
-    if result is None:
+    # Handle API error
+    if response is None:
         return "Invalid input! Please enter some text."
 
-    return str(result)
+    return str(response)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

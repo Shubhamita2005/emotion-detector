@@ -1,2 +1,3 @@
 # Emotion Detector Project
-Flask web app using Watson NLP
+
+Flask web app for emotion detection.
